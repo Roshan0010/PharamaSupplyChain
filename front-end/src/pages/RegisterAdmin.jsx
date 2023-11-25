@@ -37,9 +37,9 @@ function ConnectMetamask(){
 
 
   return (
-    <div className='w-[65%] h-full  flex justify-center gap-10  p-16'>
-      <div class='flex flex-col  p-1 w-7/12 h-1/4 justify-evenly'>
-        <p className='text-center  text-4xl mb-4'>Register</p>
+    <div className='lg:w-[65%] sm:w-[100%] h-[100%] flex justify-center p-16'>
+      <div class='flex flex-col p-1 lg:w-7/12 h-1/4 justify-evenly'>
+        <p className='text-center   text-4xl mb-4 '>Register</p>
         <form className='flex flex-col ' >
           <input
             type='text'

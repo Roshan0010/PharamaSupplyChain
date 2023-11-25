@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App h-full">
     <Toaster/>
-    <div className='h-[10%] bg-gray-300 ' >
+    <div className='h-[10%] sm:h-[5%] bg-gray-300 overflow-x-hidden ' >
      <Header/>
     </div>
 
