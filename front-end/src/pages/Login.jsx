@@ -34,15 +34,15 @@ const Login = () => {
 
     
   return (
-    <div className='w-[65%] h-[100%]  flex justify-center  p-16'>
-    <div class="flex flex-col  p-1 w-7/12 h-1/4 justify-evenly">
-    <p className='text-center  text-4xl mb-4'>Login</p>
+    <div className='lg:w-[65%] sm:w-[100%] h-[100%]  flex justify-center p-16 '>
+    <div class="flex flex-col  p-1 lg:w-7/12 h-1/4 justify-evenly">
+    <p className='text-center   text-4xl mb-4 '>Login</p>
     <form className='flex flex-col' >
     
     <input
             type='email'
             placeholder='your email'
-            className='border border-[#EFEEEF] rounded-2xl px-4 py-2 mb-2'
+            className='border border-[#EFEEEF] rounded-2xl px-4 py-2 mb-2 '
             value={email}
             onChange={(e) => setemail(e.target.value)}
           ></input>

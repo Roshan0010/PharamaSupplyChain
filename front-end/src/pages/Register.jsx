@@ -66,44 +66,40 @@ function handleChainPersonSelect(e){
 
 
   return (
-    <div className='w-[65%] h-full  flex justify-center gap-10  p-16'>
-      <div class='flex flex-col  p-1 w-7/12 h-1/4 justify-evenly'>
-        <p className='text-center  text-4xl mb-4'>Register Chain</p>
-        <form className='flex flex-col '  onSubmit={handleSubmit}>
-          <input
-            type='text'
-            placeholder='your name'
-            className='border border-[#EFEEEF] rounded-2xl px-4 py-2 mb-2'
-            value={name}
-            onChange={(e) => setname(e.target.value)}
-          ></input>
+    <div className='lg:w-[65%] sm:w-[100%] h-[100%]  flex justify-center p-16'>
+  <div className='flex flex-col  p-1 lg:w-7/12 h-1/4 justify-evenly'>
+    <p className='text-center   text-4xl mb-4 '>Register Chain</p>
+    <form className='flex flex-col' onSubmit={handleSubmit}>
+      <input
+        type='text'
+        placeholder='your name'
+        className='border border-[#EFEEEF] rounded-2xl px-4 py-2 mb-2'
+        value={name}
+        onChange={(e) => setname(e.target.value)}
+      ></input>
 
-          <div className=''>
-
-          <select className=' w-full border border-[#EFEEEF] rounded-2xl px-4 py-2 mb-2 mb-10'
-          onChange={handleChainPersonSelect}>
-            <option value="manufacturer">Manufacturer</option>
-            <option value="logistics">Logistics</option>
-            <option value="distributor">Distributor</option>
-            <option value="supplier">Supplier</option>
-            <option value="retailer">Retailer</option>
-          </select>
-
-          </div>
-
-          <ConnMetaMask isConMeta={isConMeta} setIsConMeta={setIsConMeta} />
-
-
-
-
-
-          <button className='w-[100%] bg-slate-800 p-2 text-white rounded-2xl hover:bg-slate-600'>
-            Register
-          </button>
-        </form>
-        
+      <div className=''>
+        <select
+          className='w-full border border-[#EFEEEF] rounded-2xl px-4 py-2 mb-2 '
+          onChange={handleChainPersonSelect}
+        >
+          <option value='manufacturer'>Manufacturer</option>
+          <option value='logistics'>Logistics</option>
+          <option value='distributor'>Distributor</option>
+          <option value='supplier'>Supplier</option>
+          <option value='retailer'>Retailer</option>
+        </select>
       </div>
-    </div>
+
+      <ConnMetaMask isConMeta={isConMeta} setIsConMeta={setIsConMeta} />
+
+      <button className='w-[100%] bg-slate-800 p-2 text-white rounded-2xl hover:bg-slate-600'>
+        Register
+      </button>
+    </form>
+  </div>
+</div>
+
   );
 };
 
