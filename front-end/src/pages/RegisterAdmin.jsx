@@ -37,9 +37,9 @@ function ConnectMetamask(){
 
 
   return (
-    <div className='lg:w-[65%] sm:w-[100%] h-[100%] flex justify-center p-16'>
+    <div className='lg:w-[65%] sm:w-[100%] h-[100%] flex justify-center p-16 mt-32'>
       <div class='flex flex-col p-1 lg:w-7/12 h-1/4 justify-evenly'>
-        <p className='text-center   text-4xl mb-4 '>Register</p>
+        <p className='text-center   text-4xl mb-4 '>Admin Register</p>
         <form className='flex flex-col ' >
           <input
             type='text'
@@ -77,7 +77,7 @@ function ConnectMetamask(){
         <div className='flex justify-center'>
           <p className='text-slate-400 mr-1 mt-2'>Already a member? </p>
           <NavLink to={'/login'} className='underline mt-2'>
-            Login
+             Login
           </NavLink>
         </div>
       </div>

@@ -3,6 +3,8 @@ import { NavLink, Navigate} from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import ConnMetaMask from '../components/ConnMetaMask';
+import { lighMode } from '../themes';
+import themes from '../themes';
 // import { UserContext } from '../UserContex';
 
 const Login = () => {
@@ -34,9 +36,9 @@ const Login = () => {
 
     
   return (
-    <div className='lg:w-[65%] sm:w-[100%] h-[100%]  flex justify-center p-16 '>
+    <div className='lg:w-[65%] sm:w-[100%] h-[100%]  flex justify-center p-16 mt-32'>
     <div class="flex flex-col  p-1 lg:w-7/12 h-1/4 justify-evenly">
-    <p className='text-center   text-4xl mb-4 '>Login</p>
+    <p className='text-center   text-4xl mb-4 '>Admin Login</p>
     <form className='flex flex-col' >
     
     <input
@@ -58,8 +60,8 @@ const Login = () => {
     <button className='w-[100%] bg-slate-700 p-2 text-white rounded-2xl hover:bg-slate-600'>Login</button>
     </form>
     <div className='flex justify-center'>
-    <p className=' text-slate-400 mr-1 mt-2 '>Don't Have an Account Yet? </p>
-    <NavLink to={'/register-admin'} className="underline mt-2">Register now </NavLink>
+    <p className=' text-slate-400 mr-1 mt-2 sm:text-xs md:text-sm lg:text-base  '>No Account Yet? </p>
+    <NavLink to={'/register-admin'} className="underline mt-2 sm:text-xs md:text-sm lg:text-base">Register now </NavLink>
     </div>
     
 
