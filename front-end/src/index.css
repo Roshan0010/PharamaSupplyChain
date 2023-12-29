@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.slide-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .slide-out {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+  .create-button-up {
+    margin-top: 0px;
+    transition: margin-top 0.5s ease-in-out; /* Transition for smoother movement */
+  }
+  .create-button-down {
+    margin-top:2rem;
+    transition: margin-top 0.5s ease-in-out; /* Transition for smoother movement */
+  }
+  .progress-bar-container {
+    width: 100%;
+    height: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: width 0.5s ease-in-out;
+  }
+  
+  /* ItemTable.css */
+.table-container {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Define the transition for opacity */
+}
+
+.table-container-show {
+  opacity: 1;
+  transition: opacity 0.5s ease-in; /* Show the table with a fade-in effect */
+}
+
+
+  

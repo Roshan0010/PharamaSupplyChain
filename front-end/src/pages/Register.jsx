@@ -66,7 +66,7 @@ function handleChainPersonSelect(e){
 
 
   return (
-    <div className='lg:w-[65%] sm:w-[100%] h-[100%]  flex justify-center p-16'>
+    <div className='lg:w-[65%] sm:w-[100%] h-[100%]  flex justify-center p-16 mt-32'>
   <div className='flex flex-col  p-1 lg:w-7/12 h-1/4 justify-evenly'>
     <p className='text-center   text-4xl mb-4 '>Register Chain</p>
     <form className='flex flex-col' onSubmit={handleSubmit}>
