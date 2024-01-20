@@ -1,0 +1,876 @@
+{
+	"compiler": {
+		"version": "0.8.22+commit.4fc1097e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "EntityNotFound",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotManufacturer",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotValidOperation",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "OnwerCannotBeAdded",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "drugName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "manufacturerName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "barcodeId",
+						"type": "uint256"
+					}
+				],
+				"name": "DrugOwnershipTransfer",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "enum Types.Role",
+						"name": "_role",
+						"type": "uint8"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "_entityAddress",
+						"type": "address"
+					}
+				],
+				"name": "EntityAdded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "enum Types.Role",
+						"name": "_role",
+						"type": "uint8"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "_entityAddress",
+						"type": "address"
+					}
+				],
+				"name": "EntityDisabled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "manufacturerName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "barcodeId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "manufactureDate",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "expirationDate",
+						"type": "uint256"
+					}
+				],
+				"name": "NewProduct",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "drugName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "manufacturerName",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "manufactureDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "expirationDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "barcodeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string[]",
+								"name": "compostion",
+								"type": "string[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "drugCost",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "batchCount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum Types.Stages",
+								"name": "stage",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct Types.Drug",
+						"name": "drug",
+						"type": "tuple"
+					},
+					{
+						"internalType": "uint256",
+						"name": "currentTime",
+						"type": "uint256"
+					}
+				],
+				"name": "addDrug",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "entityAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "entityName",
+						"type": "string"
+					},
+					{
+						"internalType": "enum Types.Role",
+						"name": "role",
+						"type": "uint8"
+					}
+				],
+				"name": "addEntity",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "entityAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "entityName",
+								"type": "string"
+							},
+							{
+								"internalType": "enum Types.Role",
+								"name": "entityRole",
+								"type": "uint8"
+							},
+							{
+								"internalType": "bool",
+								"name": "isActive",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct Types.Entity",
+						"name": "entity",
+						"type": "tuple"
+					}
+				],
+				"name": "addParty",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_entityAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "enum Types.Role",
+						"name": "_role",
+						"type": "uint8"
+					}
+				],
+				"name": "disableEntity",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "barcodeId",
+						"type": "uint256"
+					}
+				],
+				"name": "getASingleDrug",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "drugName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "manufacturerName",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "manufactureDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "expirationDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "barcodeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string[]",
+								"name": "compostion",
+								"type": "string[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "drugCost",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "batchCount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum Types.Stages",
+								"name": "stage",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct Types.Drug",
+						"name": "",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"components": [
+									{
+										"internalType": "address",
+										"name": "id",
+										"type": "address"
+									},
+									{
+										"internalType": "uint256",
+										"name": "date",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct Types.EntityHistory",
+								"name": "manufacturer",
+								"type": "tuple"
+							},
+							{
+								"components": [
+									{
+										"internalType": "address",
+										"name": "id",
+										"type": "address"
+									},
+									{
+										"internalType": "uint256",
+										"name": "date",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct Types.EntityHistory",
+								"name": "distributor",
+								"type": "tuple"
+							},
+							{
+								"components": [
+									{
+										"internalType": "address",
+										"name": "id",
+										"type": "address"
+									},
+									{
+										"internalType": "uint256",
+										"name": "date",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct Types.EntityHistory",
+								"name": "retailer",
+								"type": "tuple"
+							},
+							{
+								"components": [
+									{
+										"internalType": "address",
+										"name": "id",
+										"type": "address"
+									},
+									{
+										"internalType": "uint256",
+										"name": "date",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct Types.EntityHistory[]",
+								"name": "customers",
+								"type": "tuple[]"
+							}
+						],
+						"internalType": "struct Types.DrugHistory",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_entityAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "enum Types.Role",
+						"name": "_role",
+						"type": "uint8"
+					}
+				],
+				"name": "getActivityStatus",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllDrugs",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "drugName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "manufacturerName",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "manufactureDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "expirationDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "barcodeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string[]",
+								"name": "compostion",
+								"type": "string[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "drugCost",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "batchCount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum Types.Stages",
+								"name": "stage",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct Types.Drug[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_entityAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "enum Types.Role",
+						"name": "_role",
+						"type": "uint8"
+					}
+				],
+				"name": "getEntity",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "entityAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "entityName",
+								"type": "string"
+							},
+							{
+								"internalType": "enum Types.Role",
+								"name": "entityRole",
+								"type": "uint8"
+							},
+							{
+								"internalType": "bool",
+								"name": "isActive",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct Types.Entity",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "entityId",
+						"type": "address"
+					},
+					{
+						"internalType": "enum Types.Role",
+						"name": "role",
+						"type": "uint8"
+					}
+				],
+				"name": "getEntityDetails",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "entityAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "entityName",
+								"type": "string"
+							},
+							{
+								"internalType": "enum Types.Role",
+								"name": "entityRole",
+								"type": "uint8"
+							},
+							{
+								"internalType": "bool",
+								"name": "isActive",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct Types.Entity",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getEntityDrugs",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "drugName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "manufacturerName",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "manufactureDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "expirationDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "barcodeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string[]",
+								"name": "compostion",
+								"type": "string[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "drugCost",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "batchCount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum Types.Stages",
+								"name": "stage",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct Types.Drug[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMyDrug",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "drugName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "manufacturerName",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "manufactureDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "expirationDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "barcodeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string[]",
+								"name": "compostion",
+								"type": "string[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "drugCost",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "batchCount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum Types.Stages",
+								"name": "stage",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct Types.Drug[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "ownerAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "partyId",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "barcodeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "currentTime",
+						"type": "uint256"
+					}
+				],
+				"name": "sellDrug",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "Harshit Tathagat",
+			"details": "implements supply chain       inherits from the entity and drug contracts",
+			"kind": "dev",
+			"methods": {
+				"getEntityDrugs()": {
+					"details": "To get all the drugss linked a particular user",
+					"returns": {
+						"_0": "drugsList All the products that were linked to current logged-in user"
+					}
+				},
+				"getOwner()": {
+					"details": "Return owner address ",
+					"returns": {
+						"_0": "address of owner"
+					}
+				}
+			},
+			"title": "SupplyChain",
+			"version": 1
+		},
+		"userdoc": {
+			"errors": {
+				"EntityNotFound()": [
+					{
+						"notice": "entity not found"
+					}
+				],
+				"NotManufacturer()": [
+					{
+						"notice": "only manufacturers can add"
+					}
+				],
+				"NotValidOperation()": [
+					{
+						"notice": "not valid operation"
+					}
+				],
+				"OnwerCannotBeAdded()": [
+					{
+						"notice": "owner already registered, new owner cannot be added"
+					}
+				]
+			},
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/SupplyChain.sol": "SupplyChain"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Drug.sol": {
+			"keccak256": "0x1cd031e7ee4a31a1a84ba6ce7ac4b1db11c7b68e48a417e3d97fe6fc4c0aa9d6",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://c68c9f99cee39bea90a3578b1e8c798c61158d690a5014cb5e2c9f0fa0c14836",
+				"dweb:/ipfs/QmUXrkWQjhK12HQr46g3hZnWWWQRpA3Q8W51ZtUuWvsodb"
+			]
+		},
+		"contracts/Entity.sol": {
+			"keccak256": "0x59091bf844e99d837a8d56937d85d743cc36b7729907941d9ec51b93b45a0dee",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://0ce5cabfd591a5d7bc2ba86dac6d723708f2a3895e5aa7aed3f4e27fbd03adbe",
+				"dweb:/ipfs/QmP7en7P4NwV84QzycBs1Hjtjx8zuhetTe1eBwNLhz1Gzx"
+			]
+		},
+		"contracts/Ownable.sol": {
+			"keccak256": "0x06ad48be30f818e736384c4e8f523097c0261b89961c95aec2a09bef470e28da",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://761708b7d3b5d9fe3c75e99e3b9437a4190d846382634a063ac9293c0472f59d",
+				"dweb:/ipfs/QmdfpG3WrKND6qiLiVsxjXGdmetHy1hht4kdFuzotGULc5"
+			]
+		},
+		"contracts/SupplyChain.sol": {
+			"keccak256": "0xd3c1a6b87689ad3bc12267c510b0aeb68a8017b928e293f37d80fd2d6b0a55e2",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://6e0f9cd44bb8a1743c1ee7b6b8485ff90f57ef77225e01ec6e9f238ee0fc85ef",
+				"dweb:/ipfs/QmZJzppReZvkPZVWZXNjMipDg73rw7aMhqBi9BNrnPt37z"
+			]
+		},
+		"contracts/libraries/types.sol": {
+			"keccak256": "0x0770cb403309cc6e13437ba59deffac088ed18d9e4fbd53d51da9a11367df737",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://765ebddd9a99515902809aecab1d6bb6f9c10846e12d84ff474e976ddf4dab8d",
+				"dweb:/ipfs/QmRzRArarGBLmPDtT9tLExCpHapQaJQ12HV6N7tUix9hqa"
+			]
+		},
+		"hardhat/console.sol": {
+			"keccak256": "0x7434453e6d3b7d0e5d0eb7846ffdbc27f0ccf3b163591263739b628074dc103a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://49355f780520494d1d5a0f01858385e51bb5280ce0ecfb960f16995065dca395",
+				"dweb:/ipfs/QmSwJ6C5QLz6xKeQZS8wbwjU1KxRFTYfwbGmtzisd5sRW4"
+			]
+		}
+	},
+	"version": 1
+}
